@@ -1,0 +1,28 @@
+import Form from "./components/Form/Form";
+import Header from "./components/Header/Header";
+import TotalMoney from "./components/TotalMoney/TotalMoney";
+import { StyledMain } from "./mainStyle";
+import RegistryList from "./components/RegistryList/RegistryList";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const App = () => {
+  return (
+    <>
+      <Header />
+      <StyledMain>
+        <section className="form-section">
+          <Form />
+          <TotalMoney />
+        </section>
+        <section className="sumary">
+          <h2>Resumo Financeiro</h2>
+          <RegistryList />
+        </section>
+      </StyledMain>
+      <ToastContainer />
+    </>
+  );
+};
+
+export default App;
