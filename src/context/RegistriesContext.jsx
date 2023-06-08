@@ -1,12 +1,19 @@
+/* eslint-disable react/prop-types */
 import { useState, createContext } from "react";
 
 export const RegistriesContext = createContext();
 
-// eslint-disable-next-line react/prop-types
+const localList = localStorage.getItem("@nuKenzie-RegistryList");
+
 export const RegistriesContextProvider = ({ children }) => {
-  const [totalValues, setTotalValues] = useState([])
+
+  const [totalValues, setTotalValues] = useState(
+    localList ? JSON.parse(localList) : []
+  );
 
   return (
-    <RegistriesContext.Provider value={{ totalValues, setTotalValues }}>{children}</RegistriesContext.Provider>
-  )
-}
+    <RegistriesContext.Provider value={{ totalValues, setTotalValues }}>
+      {children}
+    </RegistriesContext.Provider>
+  );
+};
