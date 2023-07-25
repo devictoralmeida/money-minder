@@ -9,17 +9,9 @@ import { useRegistriesContext } from "../../hooks/useRegistriesContext";
 
 const Form = () => {
   const {setTotalValues } = useRegistriesContext();
-
   const [description, setDescription] = useState("");
   const [value, setValue] = useState("");
   const [valueType, setValueType] = useState("income");
-
-  const [newEntry, setNewEntry] = useState({
-    description: "",
-    value: "",
-    valueType: valueType,
-    id: uuidv4(),
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,26 +43,32 @@ const Form = () => {
       });
     }
 
+    const newEntry = {
+      description,
+      value, 
+      valueType,
+      id: uuidv4(),
+    }
+
     setTotalValues((totalValues) => [...totalValues, newEntry]);
-    setNewEntry({ ...newEntry, id: uuidv4() });
     toast.success("Registro adicionado com sucesso!", {
       className: "toast-sucess",
     });
+    setDescription('')
+    setValue('')
+    setValueType('income')
   };
 
   const handleDescription = (e) => {
     setDescription(e.target.value);
-    setNewEntry({ ...newEntry, description: e.target.value });
   };
 
   const handleValue = (e) => {
     setValue(parseFloat(e.target.value));
-    setNewEntry({ ...newEntry, value: parseFloat(e.target.value) });
   };
 
   const handleSelect = (e) => {
     setValueType(e.target.value);
-    setNewEntry({ ...newEntry, valueType: e.target.value });
   };
 
   return (
@@ -96,6 +94,7 @@ const Form = () => {
             labelText="Valor (R$)"
             id="value"
             name="value"
+            value={value}
             placeholder="1"
             onChange={(e) => handleValue(e)}
           />

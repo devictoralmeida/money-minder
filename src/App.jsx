@@ -12,7 +12,7 @@ const App = () => {
   const { totalValues } = useRegistriesContext();
 
   useEffect(() => {
-    localStorage.setItem("@nuKenzie-RegistryList", JSON.stringify(totalValues));
+    localStorage.setItem("@moneyMinder-RegistryList", JSON.stringify(totalValues));
   }, [totalValues]);
 
   return (

@@ -3,7 +3,7 @@ import { useState, createContext } from "react";
 
 export const RegistriesContext = createContext();
 
-const localList = localStorage.getItem("@nuKenzie-RegistryList");
+const localList = localStorage.getItem("@moneyMinder-RegistryList");
 
 export const RegistriesContextProvider = ({ children }) => {
 
