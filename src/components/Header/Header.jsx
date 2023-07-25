@@ -1,4 +1,4 @@
-import Logo from "../../assets/Nu Kenzie.svg";
+import Logo from "../../assets/logo.png";
 import { StyledHeader } from "./styles";
 
 const Header = () => {
